@@ -16,7 +16,10 @@ spec:
     spec:
       containers:
         - name: vprodb
-          image: vprofile/vprofiledb
+          image: vprofile/vprofiledb:V1
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: vprodb
           ports:
             - name: vprodb-port
               containerPort: 3306
@@ -31,7 +34,7 @@ spec:
       volumes:
         - name: vprodb
           awsElasticBlockStore:
-            volumeID: { { .Values.dbvolid } }
+            volumeID: vol-01278034467652df7
             fsType: ext4
       initContainers:
         - name: busybox
@@ -40,7 +43,3 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: vprodb
-#        env:
-#         - name: MYSQL_ROOT_PASSWORD
-#           value: "vprodbpass"
-
