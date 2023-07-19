@@ -58,7 +58,7 @@
     stage('Build App Image'){
       steps{
         script {
-          dockerImage=docker.Build registry + ":V$BUILD_NUMBER"
+          dockerImage=docker.build registry + ":V$BUILD_NUMBER"
         }
       }
     }
