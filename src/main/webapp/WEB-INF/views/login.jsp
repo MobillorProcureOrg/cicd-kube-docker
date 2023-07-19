@@ -76,7 +76,7 @@
                 <div class="container">
 
                     <form method="POST" action="${contextPath}/login" class="form-signin">
-                        <h2 class="form-heading" align="center"> LOGIN - V2</h2>
+                        <h2 class="form-heading" align="center"> LOGIN</h2>
                         <img class="logo" src="${contextPath}/resources/Images/visualpathlogo3.png" />
                         <div class="form-group ${error != null ? 'has-error' : ''}">
                             <span>${message}</span>
