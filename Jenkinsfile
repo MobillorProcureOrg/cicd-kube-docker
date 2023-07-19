@@ -62,15 +62,17 @@
         }
       }
     }
-    stage('Upload Image'){
-      steps {
-        script {
-          docker.withRegistry('',registryCredential)
-          dockerImage.push("V$BUILD_NUMBER")
-          dockerImage.push("latest")
+    stage('Deploy Image') {
+          steps{
+            script {
+              docker.withRegistry( '', registryCredential ) {
+                dockerImage.push("$BUILD_NUMBER")
+                dockerImage.push('latest')
+              }
+            }
+          }
         }
-      }
-    }
+        
     stage('Remove Unused docker image'){
       steps {
         sh "docker rmi $registry:V$BUILD_NUMBER"
